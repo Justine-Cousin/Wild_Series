@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import type { programType } from "../../../server/src/modules/programs/programActions";
 
 const API_URL = import.meta.env.VITE_API_URL as string;
 
 export const Programs = () => {
-  const [programs, setPrograms] = useState<programType[]>([]);
+  interface Program {
+    id: number;
+    title: string;
+    synopsis: string;
+    poster: string;
+  }
+
+  const [programs, setPrograms] = useState<Program[]>([]);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState(true);
 
