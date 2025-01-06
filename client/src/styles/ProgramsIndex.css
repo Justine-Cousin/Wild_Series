@@ -1,0 +1,71 @@
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start; /* Aligne les éléments au début */
+}
+
+.program-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Assure une hauteur uniforme */
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+}
+
+.program-card h1 {
+  font-size: 1.5rem;
+}
+
+.program-card p {
+  color: #666;
+  line-height: 1.5; /* meilleur espacement du texte */
+}
+
+.program-card h1,
+.program-card p {
+  padding: 1rem;
+  margin: 0;
+}
+
+.program-card img {
+  width: 300px; /* Largeur fixe */
+  height: 450px; /* Hauteur fixe */
+  object-fit: contain;
+  margin: 0 auto; /* Centre l'image */
+  display: block; /* Permet le centrage */
+}
+
+.text-content {
+  flex-grow: 1; /* Permet au contenu texte de prendre l'espace disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.program-card .details-link {
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.program-card .details-link:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

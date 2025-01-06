@@ -28,21 +28,27 @@ const programs = [
 
 import type { RequestHandler } from "express";
 
-const browse: RequestHandler = async (req, res) => {
-  const programsFromDB = await ProgramRepository.readAll();
-
-  res.json(programsFromDB);
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    const programs = await ProgramRepository.readAll();
+    res.json(programs);
+  } catch (err) {
+    next(err);
+  }
 };
 
-const read: RequestHandler = (req, res) => {
-  const parsedId = Number.parseInt(req.params.id);
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    const programId = Number(req.params.id);
+    const program = await ProgramRepository.read(programId);
 
-  const program = programs.find((p) => p.id === parsedId);
-
-  if (program != null) {
-    res.json(program);
-  } else {
-    res.sendStatus(404);
+    if (program === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(program);
+    }
+  } catch (err) {
+    next(err);
   }
 };
 
