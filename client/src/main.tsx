@@ -12,6 +12,7 @@ import App from "./App";
 // Try creating these components in the "pages" folder
 
 import ProgramsDetails from "./pages/ProgramsDetails";
+import ProgramsEdit from "./pages/ProgramsEdit";
 import ProgramsIndex from "./pages/ProgramsIndex";
 
 // import About from "./pages/About";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/programs/:id",
     element: <ProgramsDetails />,
+  },
+  {
+    path: "/programs/:id/edit",
+    element: <ProgramsEdit />,
   },
 
   // Try adding a new route! For example, "/about" with an About component

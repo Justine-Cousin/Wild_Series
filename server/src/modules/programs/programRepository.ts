@@ -26,6 +26,15 @@ class ProgramRepository {
 
     return rows[0] as Program | null;
   }
+
+  async update(program: Program) {
+    const [result] = await databaseClient.query<Result>(
+      "update program set title = ?, synopsis = ?, poster = ? where id = ?",
+      [program.title, program.synopsis, program.poster, program.id],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new ProgramRepository();
