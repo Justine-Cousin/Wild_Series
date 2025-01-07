@@ -18,7 +18,7 @@ import programActions from "./modules/programs/programActions";
 
 router.get("/api/programs", programActions.browse);
 router.get("/api/programs/:id", programActions.read);
-router.get("/api/programs/:id/items", programActions.edit);
+router.put("/api/programs/:id", programActions.edit);
 
 import categoryActions from "./modules/category/categoryActions";
 

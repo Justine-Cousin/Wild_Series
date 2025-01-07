@@ -61,9 +61,11 @@ const edit: RequestHandler = async (req, res, next) => {
       poster: req.body.poster,
       country: req.body.country,
       year: req.body.year,
+      category_id: req.body.category_id,
     };
-    const affecredRows = await ProgramRepository.update(program);
-    if (affecredRows === 0) {
+
+    const affectedRows = await ProgramRepository.update(program);
+    if (affectedRows === 0) {
       res.sendStatus(404);
     } else {
       res.sendStatus(204);
