@@ -1,3 +1,4 @@
+import joi from "joi";
 import ProgramRepository from "./programRepository";
 // Some data to make the trick
 
@@ -26,6 +27,7 @@ const programs = [
 
 // Declare the actions
 
+import { r } from "@faker-js/faker/dist/airline-C5Qwd7_q";
 import type { RequestHandler } from "express";
 
 const browse: RequestHandler = async (req, res, next) => {
@@ -106,6 +108,41 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
+const schema = joi.object({
+  title: joi.string().required(),
+  synopsis: joi.string().required(),
+  poster: joi.string().required(),
+  country: joi.string().required(),
+  year: joi.number().required(),
+  category_id: joi.number().required(),
+});
+
+interface ValidationErrorDetail {
+  message: string;
+  path: (string | number)[];
+  type: string;
+  context?: Record<string, unknown>;
+}
+
+interface ValidationError {
+  message: string;
+  details: ValidationErrorDetail[];
+}
+
+const validate: RequestHandler = (req, res, next) => {
+  const { error } = schema.validate(req.body, { abortEarly: false });
+
+  if (!error) {
+    next();
+  } else {
+    const validationError: ValidationError = {
+      message: "Validation error",
+      details: error.details,
+    };
+    res.status(400).json(validationError);
+  }
+};
+
 // Export them to import them somewhere else
 
-export default { browse, read, edit, add, destroy };
+export default { browse, read, edit, add, destroy, validate };
