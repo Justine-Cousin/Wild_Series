@@ -7,16 +7,16 @@ type ProgramFormProps = {
     synopsis: string;
     poster: string;
     country: string;
-    year: number;
-    category_id: number;
+    year: string;
+    category_id: string;
   };
   onSubmit: (data: {
     title: string;
     synopsis: string;
     poster: string;
     country: string;
-    year: number;
-    category_id: number;
+    year: string;
+    category_id: string;
   }) => void;
   children: ReactNode;
 };
@@ -32,8 +32,9 @@ function ProgramForm({ defaultValue, onSubmit, children }: ProgramFormProps) {
         const synopsis = formData.get("synopsis") as string;
         const poster = formData.get("poster") as string;
         const country = formData.get("country") as string;
-        const year = Number(formData.get("year"));
-        const category_id = Number(formData.get("category_id"));
+        const year = formData.get("year") as string;
+        const category_id = formData.get("category_id") as string;
+
         onSubmit({ title, synopsis, poster, country, year, category_id });
       }}
     >
@@ -51,7 +52,7 @@ function ProgramForm({ defaultValue, onSubmit, children }: ProgramFormProps) {
       </label>
       <label>
         Country
-        <input name="country" defaultValue={defaultValue.country} />
+        <input type="text" name="country" defaultValue={defaultValue.country} />
       </label>
       <label>
         Year

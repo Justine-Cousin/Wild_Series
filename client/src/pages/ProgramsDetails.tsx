@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "/src/styles/ProgramsDetails.css";
+import ProgramDeleteForm from "../components/ProgramDeleteForm";
 
 interface Program {
   id: number;
@@ -29,10 +30,12 @@ function ProgramsDetails() {
             <h1>{program.title}</h1>
             <Link to="/programs">Retour</Link>
             <Link to={`/programs/${program.id}/edit`}>Modifier</Link>
+
             {/* On ajoutera le bouton supprimer plus tard */}
           </hgroup>
           <img src={program.poster} alt="visuel" />
           <p>{program.synopsis}</p>
+          <ProgramDeleteForm id={program.id}>Supprimer</ProgramDeleteForm>
         </>
       )}
     </div>

@@ -1,11 +1,12 @@
 .programs-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  padding: 2rem;
+  padding: 4rem 2rem 2rem 2rem; /* Plus de padding en haut (4rem) */
   max-width: 1200px;
   margin: 0 auto;
-  align-items: start; /* Aligne les éléments au début */
+  align-items: start;
 }
 
 .program-card {
@@ -65,6 +66,29 @@
 }
 
 .program-card .details-link:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.New {
+  position: absolute;
+  top: 1rem; /* Ajusté pour tenir compte du nouveau padding */
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.New:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

@@ -34,6 +34,9 @@ export default function ProgramsIndex() {
           </Link>
         </div>
       ))}
+      <Link className="New" to="/programs/new">
+        Ajouter
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import ProgramDeleteForm from "../components/ProgramDeleteForm";
 import ProgramForm from "../components/ProgramForm";
 
 interface Program {
@@ -8,8 +9,8 @@ interface Program {
   synopsis: string;
   poster: string;
   country: string;
-  year: number;
-  category_id: number;
+  year: string;
+  category_id: string;
 }
 
 function ProgramsEdit() {
@@ -21,8 +22,8 @@ function ProgramsEdit() {
     synopsis: "",
     poster: "",
     country: "",
-    year: 0,
-    category_id: 0,
+    year: "",
+    category_id: "",
   });
 
   useEffect(() => {
@@ -57,6 +58,11 @@ function ProgramsEdit() {
           Cancel
         </button>
       </ProgramForm>
+      {id && (
+        <ProgramDeleteForm id={Number.parseInt(id, 10)}>
+          Supprimer
+        </ProgramDeleteForm>
+      )}
     </div>
   );
 }

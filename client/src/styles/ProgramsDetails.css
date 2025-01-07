@@ -60,3 +60,22 @@
   color: #444;
   margin: 2rem 0;
 }
+
+.program-details button[type="submit"] {
+  display: block;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545; /* Rouge pour indiquer une action destructive */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.program-details button[type="submit"]:hover {
+  background-color: #c82333; /* Rouge plus foncé au survol */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

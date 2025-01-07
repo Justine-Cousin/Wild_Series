@@ -14,6 +14,7 @@ import App from "./App";
 import ProgramsDetails from "./pages/ProgramsDetails";
 import ProgramsEdit from "./pages/ProgramsEdit";
 import ProgramsIndex from "./pages/ProgramsIndex";
+import ProgramsNew from "./pages/ProgramsNew";
 
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/programs/:id/edit",
     element: <ProgramsEdit />,
+  },
+  {
+    path: "/programs/new",
+    element: <ProgramsNew />,
   },
 
   // Try adding a new route! For example, "/about" with an About component

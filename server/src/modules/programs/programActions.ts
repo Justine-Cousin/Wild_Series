@@ -75,6 +75,37 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const newProgram = {
+      title: req.body.title,
+      synopsis: req.body.synopsis,
+      poster: req.body.poster,
+      country: req.body.country,
+      year: req.body.year,
+      category_id: req.body.category_id,
+    };
+
+    const insertId = await ProgramRepository.create(newProgram);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const programId = Number(req.params.id);
+    const affectedRows: number = await ProgramRepository.delete(programId);
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    }
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Export them to import them somewhere else
 
-export default { browse, read, edit };
+export default { browse, read, edit, add, destroy };

@@ -44,6 +44,31 @@ class ProgramRepository {
 
     return result.affectedRows;
   }
+
+  async create(program: Omit<Program, "id">) {
+    const [result] = await databaseClient.query<Result>(
+      "insert into program (title, synopsis, poster, country, year, category_id) values (?, ?, ?, ?, ?, ?)",
+      [
+        program.title,
+        program.synopsis,
+        program.poster,
+        program.country,
+        program.year,
+        program.category_id,
+      ],
+    );
+
+    return result.insertId;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from program where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new ProgramRepository();
